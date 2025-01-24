@@ -13,7 +13,7 @@ conn_source = psycopg2.connect(
 cursor_source = conn_source.cursor()
 
 # Extrair dados do banco de dados PostgreSQL (fonte)
-query_source = "SELECT * FROM customer_customer_demo"
+query_source = "SELECT * FROM customer_customer_demo, customer_demographics"
 cursor_source.execute(query_source)
 rows = cursor_source.fetchall()
 
