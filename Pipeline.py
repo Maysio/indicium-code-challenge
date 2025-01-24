@@ -7,7 +7,7 @@ conn_source = psycopg2.connect(
     dbname='northwind',
     user='northwind_user',
     password='thewindisblowing',
-    host='db',
+    host='localhost',
     port='5432'
 )
 cursor_source = conn_source.cursor()
