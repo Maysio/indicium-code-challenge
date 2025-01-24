@@ -13,7 +13,7 @@ conn_source = psycopg2.connect(
 cursor_source = conn_source.cursor()
 
 # Extrair dados do banco de dados PostgreSQL (fonte)
-query_source = "SELECT * FROM customer_customer_demo, customer_demographics"
+query_source = "SELECT * FROM customer_customer_demo, customer_demographics, employee_territories, orders, customers, products, shippers, suppliers, territories, us_states, categories, region, employees"
 cursor_source.execute(query_source)
 rows = cursor_source.fetchall()
 
@@ -26,7 +26,7 @@ cursor_source.close()
 conn_source.close()
 
 # Ler dados do arquivo CSV
-df_csv = pd.read_csv('caminho_do_arquivo.csv')
+df_csv = pd.read_csv('data/order_details.csv')
 
 # Combinar os dados extraídos
 df_combined = pd.concat([df_source, df_csv], ignore_index=True)
