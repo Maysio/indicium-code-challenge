@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.python.PythonOperator import PythonOperator
+from airflow.operators.python.PythonOperator
 from airflow.utils.dates import days_ago
 import pandas as pd
 import psycopg2
