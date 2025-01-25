@@ -6,16 +6,16 @@ import psycopg2
 
 # Função para extrair dados do PostgreSQL
 def extract_postgres():
-    conn = psycopg2.connect(dbname='nome_do_banco', user='usuario', password='senha', host='host', port='porta')
-    query = "SELECT * FROM tabela_fonte"
+    conn = psycopg2.connect(dbname='northwind', user='northwind_user', password='thewindisblowing', host='localhost', port='5432')
+    query = "SELECT * FROM customer_customer_demo, customer_demographics, employee_territories, orders, customers, products, shippers, suppliers, territories, us_states, categories, region, employees"
     df = pd.read_sql(query, conn)
-    df.to_csv('/path/to/save/postgres_data.csv', index=False)
+    df.to_csv('postgres_data.csv', index=False)
     conn.close()
 
 # Função para extrair dados do CSV
 def extract_csv():
-    df = pd.read_csv('/path/to/csv')
-    df.to_csv('/path/to/save/csv_data.csv', index=False)
+    df = pd.read_csv('data/order_details.csv')
+    df.to_csv('csv_data.csv', index=False)
 
 # Função para combinar dados e salvar em JSON
 def transform_and_load():
