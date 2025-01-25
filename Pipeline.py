@@ -1,3 +1,3 @@
-Airflow.py
+python3 Airflow.py
 
-Meltano.py
+python3 Meltano.py
