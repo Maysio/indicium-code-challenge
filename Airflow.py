@@ -12,7 +12,7 @@ def extract_postgres():
     df.to_csv('postgres_data.csv', index=False)
     conn.close()
 
-# Função para extrair dados do CSV
+'''# Função para extrair dados do CSV
 def extract_csv():
     df = pd.read_csv('data/order_details.csv')
     df.to_csv('csv_data.csv', index=False)
@@ -56,3 +56,4 @@ t3 = PythonOperator(
 )
 
 t1 >> t2 >> t3
+'''
