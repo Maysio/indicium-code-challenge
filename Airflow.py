@@ -1,4 +1,4 @@
-pip install apache-airflow
+pip3 install apache-airflow
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
