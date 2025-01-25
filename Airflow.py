@@ -12,12 +12,12 @@ def extract_postgres():
     df.to_csv('postgres_data.csv', index=False)
     conn.close()
 
-'''# Função para extrair dados do CSV
+# Função para extrair dados do CSV
 def extract_csv():
     df = pd.read_csv('data/order_details.csv')
     df.to_csv('csv_data.csv', index=False)
 
-# Função para combinar dados e salvar em JSON
+'''# Função para combinar dados e salvar em JSON
 def transform_and_load():
     df_postgres = pd.read_csv('/path/to/save/postgres_data.csv')
     df_csv = pd.read_csv('/path/to/save/csv_data.csv')
