@@ -12,13 +12,9 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-#cd ~
-#git clone https://github.com/Maysio/indicium-code-challenge
-#cd indicium-code-challenge/
-sudo groupadd docker
-sudo usermod -aG docker $USER
-
-docker-compose up -d
+#sudo groupadd docker
+#sudo usermod -aG docker $USER
+sudo docker-compose up -d
 
 ###Install Apache Airflow
 #pip3 install apache-airflow --break-system-packages
