@@ -9,11 +9,11 @@ def extract_csv_data(file_path):
 # Run the step
 extract_csv_data('./data/order_details.csv')
 
-import psycopg3
+import psycopg2
 import pandas as pd
 
 def extract_db_data(conn_params, query, output_path):
-    conn = psycopg3.connect(**conn_params)
+    conn = psycopg2.connect(**conn_params)
     db_data = pd.read_sql(query, conn)
     db_data.to_csv(output_path, index=False)
     conn.close()
@@ -33,7 +33,7 @@ output_path = './data/db_data.csv'
 extract_db_data(conn_params, query, output_path)
 
 
-import psycopg3
+import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -49,7 +49,7 @@ conn_string = 'postgresql://northwind_user:thewindisblowing@localhost/northwind'
 # Run the step
 load_csv_to_db('./data/order_details.csv', conn_string, 'order_details')
 
-import psycopg3
+import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
