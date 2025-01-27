@@ -46,6 +46,6 @@ conn = psycopg2.connect(
 )
 
 # Load data into PostgreSQL
-db_data.to_sql(customer_customer_demo; customer_demographics; employee_territories; orders; customers; products; shippers; suppliers; territories; us_states; categories; region; employees;"
+db_data.to_sql(customer_customer_demo; customer_demographics; employee_territories; orders; customers; products; shippers; suppliers; territories; us_states; categories; region; employees"
 , conn, if_exists='replace', index=False)
 conn.close()
