@@ -39,7 +39,7 @@ output_path = './data/db_data.csv'
 extract_db_data(conn_params, query, output_path)
 
 
-import psycopg2-binary
+import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -55,7 +55,7 @@ conn_string = 'postgresql://northwind_user:thewindisblowing@localhost/northwind'
 # Run the step
 load_csv_to_db('./data/order_details.csv', conn_string, 'order_details')
 
-import psycopg2-binary
+import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine
 
