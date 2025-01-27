@@ -15,7 +15,7 @@ conn = psycopg2-binary.connect(
     user="northwind_user",
     password="thewindisblowing"
 )
-import psycopg2-binary
+import psycopg2
 import pandas as pd
 
 def extract_db_data(conn_params, query, output_path):
