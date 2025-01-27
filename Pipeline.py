@@ -14,10 +14,13 @@ extract_csv_data('./data/order_details.csv', '/data')
 import psycopg2
 import pandas as pd
 from datetime import datetime
+from sqlalchemy import create_engine
 
 def extract_db_data(conn_params, query, output_dir, table_name):
-    conn = psycopg2.connect(**conn_params)
-    db_data = pd.read_sql(query, conn)
+#    conn = psycopg2.connect(**conn_params)
+    engine = create_engine(conn_string)
+#    db_data = pd.read_sql(query, conn)
+    db_data = pd.read_sql(query, engine)
     today = datetime.today().strftime('%Y-%m-%d')
     output_path = f'{output_dir}/postgres/{table_name}/{today}/{table_name}.csv'
     db_data.to_csv(output_path, index=False)
@@ -25,12 +28,14 @@ def extract_db_data(conn_params, query, output_dir, table_name):
     print(f"Database data from {table_name} extracted and saved locally at {output_path}.")
     
 # Connection parameters and query
-conn_params = {
+'''conn_params = {
     'host': 'localhost',
     'database': 'northwind',
     'user': 'northwind_user',
     'password': 'thewindisblowing'
-}
+}'''
+conn_string = 'postgresql://northwind_user:thewindisblowing@localhost/northwind'
+
 query = "SELECT * FROM customer_customer_demo, customer_demographics, employee_territories, orders, customers, products, shippers, suppliers, territories, us_states, categories, region, employees"
 table_name = 'customer_customer_demo, customer_demographics, employee_territories, orders, customers, products, shippers, suppliers, territories, us_states, categories, region, employees'
 # Run the step
