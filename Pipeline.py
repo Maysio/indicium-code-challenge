@@ -15,7 +15,7 @@ conn = psycopg2.connect(
 )
 
 # Query to extract data
-query = "SELECT * FROM customer_customer_demo; customer_demographics; employee_territories; orders; customers; products; shippers; suppliers; territories; us_states; categories; region; employees;"
+query = "SELECT * FROM customer_customer_demo; customer_demographics; employee_territories; orders; customers; products; shippers; suppliers; territories; us_states; categories; region; employees;
 db_data = pd.read_sql(query, conn)
 
 # Close the connection
