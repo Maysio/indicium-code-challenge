@@ -9,17 +9,17 @@ def extract_csv_data(file_path):
 # Run the step
 extract_csv_data('./data/order_details.csv')
 
-conn = psycopg2.connect(
+conn = psycopg2-binary.connect(
     host="localhost",
     database="northwind",
     user="northwind_user",
     password="thewindisblowing"
 )
-import psycopg2
+import psycopg2-binary
 import pandas as pd
 
 def extract_db_data(conn_params, query, output_path):
-    conn = psycopg2.connect(**conn_params)
+    conn = psycopg2-binary.connect(**conn_params)
     db_data = pd.read_sql(query, conn)
     db_data.to_csv(output_path, index=False)
     conn.close()
@@ -39,7 +39,7 @@ output_path = './data/db_data.csv'
 extract_db_data(conn_params, query, output_path)
 
 
-import psycopg2
+import psycopg2-binary
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -54,3 +54,19 @@ conn_string = 'postgresql://northwind_user:thewindisblowing@localhost/northwind'
 
 # Run the step
 load_csv_to_db('./data/order_details.csv', conn_string, 'order_details')
+
+import psycopg2-binary
+import pandas as pd
+from sqlalchemy import create_engine
+
+def load_db_data_to_db(csv_path, conn_string, table_name):
+    db_data = pd.read_csv(csv_path)
+    engine = create_engine(conn_string)
+    db_data.to_sql(table_name, engine, if_exists='replace', index=False)
+    print("Database data loaded into PostgreSQL database.")
+
+# Connection string
+conn_string = 'postgresql://northwind_user:thewindisblowing@localhost/northwind'
+
+# Run the step
+load_db_data_to_db('./data/db_data.csv', conn_string, 'customer_customer_demo, customer_demographics, employee_territories, orders, customers, products, shippers, suppliers, territories, us_states, categories, region, employees')
