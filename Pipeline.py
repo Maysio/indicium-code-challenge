@@ -19,8 +19,8 @@ from sqlalchemy import create_engine
 def extract_db_data(conn_params, query, output_dir, table_name):
 #    conn = psycopg2.connect(**conn_params)
     engine = create_engine(conn_string)
-#    db_data = pd.read_sql(query, conn)
-    db_data = pd.read_sql(query, engine)
+    db_data = pd.read_sql(query, conn)
+#    db_data = pd.read_sql(query, engine)
     today = datetime.today().strftime('%Y-%m-%d')
     output_path = f'{output_dir}/postgres/{table_name}/{today}/{table_name}.csv'
     db_data.to_csv(output_path, index=False)
