@@ -28,12 +28,12 @@ def extract_db_data(conn_params, query, output_dir, table_name):
     print(f"Database data from {table_name} extracted and saved locally at {output_path}.")
     
 # Connection parameters and query
-'''conn_params = {
+conn_params = {
     'host': 'localhost',
     'database': 'northwind',
     'user': 'northwind_user',
     'password': 'thewindisblowing'
-}'''
+}
 conn_string = 'postgresql://northwind_user:thewindisblowing@localhost/northwind'
 
 query = "SELECT * FROM customer_customer_demo, customer_demographics, employee_territories, orders, customers, products, shippers, suppliers, territories, us_states, categories, region, employees"
