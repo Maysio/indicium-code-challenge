@@ -42,6 +42,37 @@ db_query = "SELECT * FROM customer_customer_demo"
 
 # Run the steps
 extract_csv_data('./data/order_details.csv', '/data')
+
+from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+from datetime import datetime, timedelta
+
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime(2025, 1, 27),
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG('meltano_etl', default_args=default_args, schedule_interval='@daily')
+
+extract_csv_data = BashOperator(
+    task_id='extract_csv_data',
+    bash_command='meltano run tap-csv target-postgres',
+    dag=dag,
+)
+
+load_db_data = BashOperator(
+    task_id='load_db_data',
+    bash_command='python load_db_data.py',
+    dag=dag,
+)
+
+extract_csv_data >> load_db_data
+
 extract_db_data(conn_string, db_query, '/data', 'customer_customer_demo')
 load_csv_to_db('/data/csv/2024-01-02/order_details.csv', conn_string, 'order_details')
 load_db_data_to_db('./data/db_data.csv', conn_string, 'customer_customer_demo')
