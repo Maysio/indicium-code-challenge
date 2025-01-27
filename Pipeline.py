@@ -9,7 +9,7 @@ def extract_csv_data(file_path):
 # Run the step
 extract_csv_data('./data/order_details.csv')
 
-conn = psycopg2-binary.connect(
+conn = psycopg3.connect(
     host="localhost",
     database="northwind",
     user="northwind_user",
